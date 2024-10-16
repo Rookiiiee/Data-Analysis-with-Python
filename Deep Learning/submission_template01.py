@@ -3,13 +3,18 @@ import torch
 from torch import nn
 
 def create_model():
-    # your code here
+    model = nn.Sequential(
+        nn.Linear(784, 256, bias=True),
+        nn.ReLU(),
+        nn.Linear(256, 16, bias=True),
+        nn.ReLU(),
+        nn.Linear(16, 10, bias=True)
+    )
     # return model instance (None is just a placeholder)
-
-    return None
+    return model
 
 def count_parameters(model):
     # your code here
     # return integer number (None is just a placeholder)
-    
+    return sum(p.numel() for p in model.parameters())
     return None
